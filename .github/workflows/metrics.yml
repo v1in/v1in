@@ -6,11 +6,13 @@ on:
   schedule: [{ cron: "*/2 * * * *" }] # At every 2th minute
   push: { branches: "main" }
 jobs:
-  github-metrics:
+  github-metrics-personal:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@latest
+      - name: github-metrics.svg
+        uses: lowlighter/metrics@latest
         with:
+          filename: github-metrics.svg
           # You'll need to setup a personal token in your secrets.
           token: ${{ secrets.METRICS_TOKEN }}
           # GITHUB_TOKEN is a special auto-generated token used for commits
@@ -19,11 +21,37 @@ jobs:
           # Options
           user: v1in
           template: classic
-          base: header, activity, community, metadata
+          base: header, activity, community
           config_timezone: Europe/Minsk
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: half-year
+
+      - name: Languages plugin
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.languages.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          base: ""
           plugin_languages: yes
+          config_timezone: Europe/Minsk
+
+      - name: Isocalendar plugin
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.isocalendar.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          base: ""
+          plugin_isocalendar: yes
+          config_timezone: Europe/Minsk
+
+      - name: PageSpeed plugin (detailed)
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.pagespeed.detailed.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          base: "metadata"
           plugin_pagespeed: yes
           plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
           plugin_pagespeed_detailed: yes
+          config_timezone: Europe/Minsk
