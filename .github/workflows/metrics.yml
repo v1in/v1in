@@ -1,0 +1,28 @@
+# Visit https://github.com/lowlighter/metrics/blob/master/action.yml for full reference
+name: Metrics
+on:
+  # Schedule updates
+  # Visit for more details https://crontab.guru/
+  schedule: [{ cron: "*/2 * * * *" }] # At every 2th minute
+  push: { branches: "main" }
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # You'll need to setup a personal token in your secrets.
+          token: ${{ secrets.METRICS_TOKEN }}
+          # GITHUB_TOKEN is a special auto-generated token used for commits
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Options
+          user: v1in
+          template: classic
+          base: header, activity, community, metadata
+          config_timezone: Europe/Minsk
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+          plugin_languages: yes
+          plugin_pagespeed: yes
+          plugin_pagespeed_detailed: yes
