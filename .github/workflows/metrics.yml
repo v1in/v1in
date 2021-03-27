@@ -24,10 +24,10 @@ jobs:
           base: header, activity, community
           config_timezone: Europe/Minsk
 
-      - name: Languages plugin
+      - name: Languages plugin (detailed)
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.languages.svg
+          filename: metrics.plugin.languages.details.svg
           token: ${{ secrets.METRICS_TOKEN }}
           committer_token: ${{ secrets.GITHUB_TOKEN }}
           base: ""
