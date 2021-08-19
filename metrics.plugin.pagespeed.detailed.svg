@@ -1280,7 +1280,7 @@
                     <div class="field">
                         <div class="audit text">
               
-                0.79 s
+                0.80 s
               
             </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="audit high" viewBox="0 0 16 16" width="16" height="16">
@@ -1328,7 +1328,7 @@
                     <div class="field">
                         <div class="audit text">
               
-                0.79 s
+                0.80 s
               
             </div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="audit high" viewBox="0 0 16 16" width="16" height="16">
@@ -1349,7 +1349,7 @@
             </div>
             <footer>
                 <span>These metrics do not include all private contributions</span>
-                <span>Last updated 19/08/2021, 08:17 (timezone Europe/Warsaw) with lowlighter/metrics@3.12.0</span>
+                <span>Last updated 19/08/2021, 14:23 (timezone Europe/Warsaw) with lowlighter/metrics@3.12.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
